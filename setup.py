@@ -19,7 +19,7 @@ setup(
     license='GPLv3+',
     packages=['passpy'],
     install_requires=[
-        'python-gnupg>=0.3.8',
+        "pretty-bad-protocol",
         'GitPython>=1.0.1',
         'pyperclip>=1.5',
         'click>=2.0',

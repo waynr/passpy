@@ -16,7 +16,7 @@
 
 import os
 
-from gnupg import GPG
+from pretty_bad_protocol.gnupg import GPG
 
 
 def _get_gpg_recipients(path):
@@ -60,8 +60,8 @@ def read_key(path, gpg_bin, gpg_opts):
     :returns: The unencrypted content of the file at `path`.
 
     """
-    gpg = GPG(gpgbinary=gpg_bin, options=gpg_opts)
-    with open(path, 'rb') as key_file:
+    gpg = GPG(binary=gpg_bin, options=gpg_opts)
+    with open(path, "rb") as key_file:
         return str(gpg.decrypt_file(key_file))
 
 
@@ -75,7 +75,7 @@ def write_key(path, key_data, gpg_bin, gpg_opts):
     :param list gpg_opts: The options for gpg.
 
     """
-    gpg = GPG(gpgbinary=gpg_bin, options=gpg_opts)
+    gpg = GPG(binary=gpg_bin, options=gpg_opts)
     gpg_recipients = _get_gpg_recipients(path)
     # pass always ends it's files with an endline
     if not key_data.endswith('\n'):
@@ -124,7 +124,7 @@ def reencrypt_path(path, gpg_bin, gpg_opts):
     """
     if path is None:
         return
-    gpg = GPG(gpgbinary=gpg_bin, options=gpg_opts)
+    gpg = GPG(binary=gpg_bin, options=gpg_opts)
     if os.path.isfile(path):
         gpg_recipients = _get_gpg_recipients(path)
         _reencrypt_key(path, gpg, gpg_recipients)

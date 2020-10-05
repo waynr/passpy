@@ -27,7 +27,7 @@ click = ">=2.0"
 colorama = { version = ">=0.3", optional = true }
 GitPython = ">=1.0.1"
 pyperclip = ">=1.5"
-python-gnupg = ">=0.3.8"
+pretty-bad-protocol = { git = "https://github.com/waynr/python-gnupg.git", branch = "master" }
 
 [tool.poetry.dev-dependencies]
 
